@@ -68,8 +68,7 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
         mObserver = new MovieObserver(new Handler(Looper.getMainLooper())) {
             @Override
             public void onChange(boolean selfChange, Uri uri) {
-                if (Constants.mTwoPane)
-                    getLoaderManager().restartLoader(Constants.MOVIE_LOADER, null, MoviesFragment.this);
+                getLoaderManager().restartLoader(Constants.MOVIE_LOADER, null, MoviesFragment.this);
             }
         };
         getActivity().getContentResolver().registerContentObserver(MovieColumns.CONTENT_URI, true, mObserver);
